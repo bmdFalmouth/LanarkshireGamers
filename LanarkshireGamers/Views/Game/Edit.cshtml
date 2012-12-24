@@ -1,0 +1,91 @@
+﻿@model LanarkshireGamers.Game
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Game</legend>
+
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GeekID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GeekID)
+            @Html.ValidationMessageFor(model => model.GeekID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ThumbNailURL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ThumbNailURL)
+            @Html.ValidationMessageFor(model => model.ThumbNailURL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Description)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Description)
+            @Html.ValidationMessageFor(model => model.Description)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MinNumberOfPlayers)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MinNumberOfPlayers)
+            @Html.ValidationMessageFor(model => model.MinNumberOfPlayers)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaxNumberOfPlayers)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaxNumberOfPlayers)
+            @Html.ValidationMessageFor(model => model.MaxNumberOfPlayers)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GeekRating)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GeekRating)
+            @Html.ValidationMessageFor(model => model.GeekRating)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PlayTime)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PlayTime)
+            @Html.ValidationMessageFor(model => model.PlayTime)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

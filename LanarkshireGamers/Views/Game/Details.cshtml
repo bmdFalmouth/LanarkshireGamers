@@ -1,0 +1,55 @@
+﻿@model LanarkshireGamers.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Game</legend>
+
+    <div class="display-label">GeekID</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GeekID)
+    </div>
+
+    <div class="display-label">Name</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">ThumbNailURL</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ThumbNailURL)
+    </div>
+
+    <div class="display-label">Description</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+
+    <div class="display-label">MinNumberOfPlayers</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MinNumberOfPlayers)
+    </div>
+
+    <div class="display-label">MaxNumberOfPlayers</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaxNumberOfPlayers)
+    </div>
+
+    <div class="display-label">GeekRating</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GeekRating)
+    </div>
+
+    <div class="display-label">PlayTime</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PlayTime)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
