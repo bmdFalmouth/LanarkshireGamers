@@ -11,10 +11,10 @@ namespace LanarkshireGamers
     {
         public LanarkshireGamersContext()
         {
-            /*
+
 #if DEBUG
             Database.SetInitializer(new DropCreateDatabaseAlways<LanarkshireGamersContext>());
-#endif*/
+#endif
         }
 
         public DbSet<User> User { get; set; }
