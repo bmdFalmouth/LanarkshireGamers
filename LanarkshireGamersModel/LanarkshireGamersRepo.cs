@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LanarkshireGamersData.Model;
 
 namespace LanarkshireGamersData
 {
@@ -9,9 +10,45 @@ namespace LanarkshireGamersData
     {
         private LanarkshireGamersContext context;
 
-        public LanarkshireGamersRepo()
+        static readonly LanarkshireGamersRepo instance = new LanarkshireGamersRepo();
+
+        static LanarkshireGamersRepo()
+        {
+
+        }
+
+        public static LanarkshireGamersRepo Instance
+        {
+            get
+            {
+                return instance;
+            }
+        }
+
+        LanarkshireGamersRepo()
         {
             context = new LanarkshireGamersContext();
+        }
+
+        public User GetUserByUsername(string username)
+        {
+            User user = context.User.FirstOrDefault(u => u.UserName == username);
+            return user;
+        }
+
+        public bool AddUser(User u)
+        {
+            context.User.Add(u);
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException ioe)
+            {
+                //rethrow as an add user exception
+                return false;
+            }
+            return true;
         }
 
 

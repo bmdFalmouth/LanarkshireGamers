@@ -48,6 +48,10 @@ namespace LanarkshireGamers.Models.View
         [Display(Name = "User name")]
         public string UserName { get; set; }
 
+        public string Firstname { get; set; }
+
+        public string Lastname { get; set; }
+
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
