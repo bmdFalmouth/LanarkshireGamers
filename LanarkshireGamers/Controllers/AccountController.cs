@@ -33,7 +33,21 @@ namespace LanarkshireGamers.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Membership.ValidateUser(HttpContext.User.Identity.Name, model.Password))
+                {
+                    MembershipUser user = Membership.GetUser(HttpContext.User.Identity.Name);
+                    if (user.GetPassword()!=model.Password){
+                        user.ChangePassword(user.GetPassword(), model.Password);
+                    }
+                    user.Email = model.Email;
 
+                    Membership.UpdateUser(user);
+                    if (userLogic.UpdateUserDetails(HttpContext.User.Identity.Name, model))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
             }
             //Something wrong
             return View(model);
@@ -64,14 +78,13 @@ namespace LanarkshireGamers.Controllers
                     }
                     else
                     {
-                        
                         return RedirectToAction("Index", "Home");
                     }
                 }
-                else
-                {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
-                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "Unable to edit your account");
             }
 
             // If we got this far, something failed, redisplay form

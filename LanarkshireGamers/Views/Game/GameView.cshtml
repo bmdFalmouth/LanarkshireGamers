@@ -1,0 +1,11 @@
+﻿@model IEnumerable<LanarkshireGamers.ViewModel.SearchGameViewModel>
+
+@if (Model != null)
+{    
+    foreach (var item in Model)
+    {
+        <div id='@item.GeekID'>
+            <b>@item.Name</b>
+        </div>
+    }
+}

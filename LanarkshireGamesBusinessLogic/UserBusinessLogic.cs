@@ -9,6 +9,8 @@ using LanarkshireGamesBusinessLogic.Helpers;
 
 namespace LanarkshireGamesBusinessLogic
 {
+    //http://amirrajan.net/Blog/asp-mvc-and-facebook-single-sign-on
+
     public class UserBusinessLogic
     {
         public enum UserRegistrationInfo
@@ -58,7 +60,7 @@ namespace LanarkshireGamesBusinessLogic
                 User u=LanarkshireGamersRepo.Instance.GetUserByUsername(username);
 
                 u.EmailAddress = editModel.Email;
-                u.FacebookUserName = editModel.FacebookUserName;
+                u.FacebookDetails.email = editModel.FacebookUserName;
                 u.Firstname = editModel.Firstname;
                 u.GeekUserName = editModel.GeekUserName;
                 u.Lastname = editModel.Lastname;

@@ -37,6 +37,41 @@ namespace LanarkshireGamersData
             return user;
         }
 
+        public bool AddGame(Game g)
+        {
+            context.Game.Add(g);
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (InvalidOperationException ioe)
+            {
+                //rethrow as an add user exception
+                return false;
+            }
+            return true;
+        }
+
+        public bool AddGameToUser(User u, Game g)
+        {
+            if (context.Game.FirstOrDefault(game => game.Name == g.Name)==null)
+            {
+                AddGame(g);
+            }
+            u.Games.Add(g);
+            try
+            {
+                context.Entry(u).State = EntityState.Modified;
+            }
+            catch (InvalidOperationException ioe)
+            {
+                //rethrow as an add user exception
+                return false;
+            }
+
+            return true;
+        }
+
         public bool AddUser(User u)
         {
             context.User.Add(u);
@@ -57,6 +92,11 @@ namespace LanarkshireGamersData
             context.Entry(u).State = EntityState.Modified;
             context.SaveChanges();
             return true;
+        }
+
+        public IEnumerable<Game> RetrieveAllGames()
+        {
+            return context.Game;
         }
 
 

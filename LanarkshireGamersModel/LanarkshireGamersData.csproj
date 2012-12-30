@@ -44,9 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\DownloadEventArgs.cs" />
-    <Compile Include="Helpers\GeekHelpers.cs" />
-    <Compile Include="Helpers\WebHelpers.cs" />
     <Compile Include="LanarkshireGamersContext.cs" />
     <Compile Include="LanarkshireGamersRepo.cs" />
     <Compile Include="Model\Game.cs" />
