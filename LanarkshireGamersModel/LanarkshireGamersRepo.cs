@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LanarkshireGamersData.Model;
+using System.Data;
 
 namespace LanarkshireGamersData
 {
@@ -48,6 +49,13 @@ namespace LanarkshireGamersData
                 //rethrow as an add user exception
                 return false;
             }
+            return true;
+        }
+
+        public bool UpdateUser(User u)
+        {
+            context.Entry(u).State = EntityState.Modified;
+            context.SaveChanges();
             return true;
         }
 

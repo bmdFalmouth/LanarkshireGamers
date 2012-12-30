@@ -40,17 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\BusinessLogicHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserBusinessLogic.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LanarkshireGamers.ViewModel\LanarkshireGamers.ViewModel.csproj">
+      <Project>{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}</Project>
+      <Name>LanarkshireGamers.ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LanarkshireGamersModel\LanarkshireGamersData.csproj">
       <Project>{39DD976B-1C6B-49BF-B96F-CEB663030ECF}</Project>
       <Name>LanarkshireGamersData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LanarkshireGamers\LanarkshireGamers.csproj">
-      <Project>{840B997A-58C9-4D8B-A28C-8EC698B17F8D}</Project>
-      <Name>LanarkshireGamers</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

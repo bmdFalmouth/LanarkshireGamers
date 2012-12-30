@@ -1,4 +1,4 @@
-﻿@model LanarkshireGamers.Models.View.RegisterModel
+﻿@model LanarkshireGamers.ViewModel.RegisterModel
 
 @{
     ViewBag.Title = "Register";
@@ -28,7 +28,22 @@
                 @Html.TextBoxFor(m => m.UserName)
                 @Html.ValidationMessageFor(m => m.UserName)
             </div>
+            
+            <div class="editor-label">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </div>
 
+            <div class="editor-label">
+                @Html.LabelFor(m => m.ConfirmPassword)
+            </div>
+            <div class="editor-field">
+                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
+            </div>
             <div class="editor-label">
                 @Html.LabelFor(m => m.Firstname)
             </div>
@@ -68,23 +83,6 @@
                 @Html.TextBoxFor(m => m.FacebookUserName)
                 @Html.ValidationMessageFor(m => m.FacebookUserName)
             </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.Password)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
-            </div>
-
-            <div class="editor-label">
-                @Html.LabelFor(m => m.ConfirmPassword)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(m => m.ConfirmPassword)
-                @Html.ValidationMessageFor(m => m.ConfirmPassword)
-            </div>
-
             <p>
                 <input type="submit" value="Register" />
             </p>

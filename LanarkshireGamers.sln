@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanarkshireGamersData", "La
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanarkshireGamesBusinessLogic", "LanarkshireGamesBusinessLogic\LanarkshireGamesBusinessLogic.csproj", "{2DFB584C-88BD-40C6-9180-198FDFF66AA3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LanarkshireGamers.ViewModel", "LanarkshireGamers.ViewModel\LanarkshireGamers.ViewModel.csproj", "{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{2DFB584C-88BD-40C6-9180-198FDFF66AA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DFB584C-88BD-40C6-9180-198FDFF66AA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DFB584C-88BD-40C6-9180-198FDFF66AA3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

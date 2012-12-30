@@ -67,8 +67,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\View\AccountModels.cs" />
-    <Compile Include="Models\View\DownloadViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +149,19 @@
   <ItemGroup>
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LanarkshireGamers.ViewModel\LanarkshireGamers.ViewModel.csproj">
+      <Project>{59A62FB3-243D-4DD6-86F7-5CD25D3F75BB}</Project>
+      <Name>LanarkshireGamers.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LanarkshireGamesBusinessLogic\LanarkshireGamesBusinessLogic.csproj">
+      <Project>{2DFB584C-88BD-40C6-9180-198FDFF66AA3}</Project>
+      <Name>LanarkshireGamesBusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

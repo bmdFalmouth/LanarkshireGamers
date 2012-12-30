@@ -5,16 +5,42 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Web.Security;
-using LanarkshireGamers.Models.View;
+using LanarkshireGamers.ViewModel;
+using LanarkshireGamesBusinessLogic;
 
 namespace LanarkshireGamers.Controllers
 {
     public class AccountController : Controller
     {
 
+        UserBusinessLogic userLogic = new UserBusinessLogic();
+
+        //
+        // Get: /Account/Edit
+        [Authorize]
+        public ActionResult Edit()
+        {
+            //HttpContext.User.Identity.Name;
+            EditModel edit = userLogic.GetUser(HttpContext.User.Identity.Name);
+            return View(edit);
+        }
+
+        //
+        //Post: /Account/Edit
+        [Authorize]
+        [HttpPost]
+        public ActionResult Edit(EditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+            }
+            //Something wrong
+            return View(model);
+        }
+
         //
         // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
@@ -38,6 +64,7 @@ namespace LanarkshireGamers.Controllers
                     }
                     else
                     {
+                        
                         return RedirectToAction("Index", "Home");
                     }
                 }
@@ -79,12 +106,22 @@ namespace LanarkshireGamers.Controllers
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, string.Empty, string.Empty, true, null, out createStatus);
+                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    if (userLogic.RegisterUser(model) == UserBusinessLogic.UserRegistrationInfo.Success)
+                        return RedirectToAction("Index", "Home");
+                    else if (userLogic.RegisterUser(model) == UserBusinessLogic.UserRegistrationInfo.AlreadyRegistered)
+                        return RedirectToAction("Index", "Home");
+                    else
+                    {
+                        createStatus = MembershipCreateStatus.DuplicateUserName;
+                        ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                        return View(model);
+                    }
+
                 }
                 else
                 {
@@ -117,11 +154,13 @@ namespace LanarkshireGamers.Controllers
 
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
-                bool changePasswordSucceeded;
+                bool changePasswordSucceeded=false;
                 try
                 {
                     MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
-                    changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
+                    //change password with our user system
+                    if ((userLogic.UpdateUserPassword(HttpContext.User.Identity.Name, model)) && (currentUser.ChangePassword(model.OldPassword, model.NewPassword)))
+                        changePasswordSucceeded = true;
                 }
                 catch (Exception)
                 {
