@@ -22,7 +22,10 @@ namespace LanarkshireGamers.Controllers
         //Get: /Game/Search
         public ActionResult Search()
         {
-            return View();
+            SearchGameViewModelResults search = new SearchGameViewModelResults();
+            search.searchTerm = "Catan";
+            search.Games = new List<SearchGameViewModel>(gameLogic.SearchGamesOnGeek(search.searchTerm));
+            return View(search);
         }
 
         //
@@ -40,6 +43,17 @@ namespace LanarkshireGamers.Controllers
                 search.Games = new List<SearchGameViewModel>(gameLogic.SearchGamesOnGeek(search.searchTerm));
                 return PartialView(search);
             }
+        }
+
+        //
+        //Post: /Game/SaveSelection
+        [HttpPost]
+        public ActionResult SaveSelection(SearchGameViewModelResults results)
+        {
+            //get the results - get a filtered list of only those selected and then pass to 
+            //logic to convert and save
+            var saveResults = results.Games.Where(x => x.Selected == true);
+            return Redirect("Index");
         }
 
     }

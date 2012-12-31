@@ -1,11 +1,10 @@
-﻿@model IEnumerable<LanarkshireGamers.ViewModel.SearchGameViewModel>
+﻿@model LanarkshireGamers.ViewModel.SearchGameViewModelResults
 
-@if (Model != null)
-{    
-    foreach (var item in Model)
-    {
-        <div id='@item.GeekID'>
-            <b>@item.Name</b>
+@foreach (var item in Model.Games)
+{
+    <fieldset>
+        <div class="editor-field">
+             <h2>@Html.EditorFor(modelItem => item.Name)</h2>
         </div>
-    }
+    </fieldset>
 }

@@ -165,13 +165,13 @@
     <Content Include="Views\Account\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Game\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Views\Game\GameView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Game\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Game\Index.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

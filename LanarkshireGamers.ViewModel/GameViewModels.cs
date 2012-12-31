@@ -33,6 +33,10 @@ namespace LanarkshireGamers.ViewModel
 
     public class SearchGameViewModelResults
     {
+        public SearchGameViewModelResults()
+        {
+            Games = new List<SearchGameViewModel>();
+        }
         public string searchTerm { get; set; }
         public IEnumerable<SearchGameViewModel> Games { get; set; }
     }
