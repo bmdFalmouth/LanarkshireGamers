@@ -33,15 +33,14 @@ namespace LanarkshireGamers.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (Membership.ValidateUser(HttpContext.User.Identity.Name, model.Password))
+                //get password
+                string password = userLogic.GetPassword(HttpContext.User.Identity.Name);
+                if (Membership.ValidateUser(HttpContext.User.Identity.Name, password))
                 {
                     MembershipUser user = Membership.GetUser(HttpContext.User.Identity.Name);
-                    if (user.GetPassword()!=model.Password){
-                        user.ChangePassword(user.GetPassword(), model.Password);
-                    }
                     user.Email = model.Email;
-
                     Membership.UpdateUser(user);
+
                     if (userLogic.UpdateUserDetails(HttpContext.User.Identity.Name, model))
                     {
                         return RedirectToAction("Index", "Home");

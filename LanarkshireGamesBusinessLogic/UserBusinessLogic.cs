@@ -52,6 +52,17 @@ namespace LanarkshireGamesBusinessLogic
             return null;
         }
 
+        public string GetPassword(string username)
+        {
+            if (UserExists(username))
+            {
+                User u = LanarkshireGamersRepo.Instance.GetUserByUsername(username);
+                return u.Password;
+            }
+
+            return string.Empty;
+        }
+
         public bool UpdateUserDetails(string username, EditModel editModel)
         {
             //get user
@@ -64,7 +75,6 @@ namespace LanarkshireGamesBusinessLogic
                 u.Firstname = editModel.Firstname;
                 u.GeekUserName = editModel.GeekUserName;
                 u.Lastname = editModel.Lastname;
-                u.Password = editModel.Password;
 
                 LanarkshireGamersRepo.Instance.UpdateUser(u);
                 return true;

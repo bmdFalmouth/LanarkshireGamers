@@ -39,5 +39,16 @@ namespace LanarkshireGamesBusinessLogic
 
             return gamesViewModel;
         }
+
+        public bool SaveAllGames(IEnumerable<SearchGameViewModel> games,string username)
+        {
+            User user=LanarkshireGamersRepo.Instance.GetUserByUsername(username);
+            foreach (SearchGameViewModel sgvm in games)
+            {
+                BoardGameGeekGame geekGame = GeekHelpers.GetGameByGeekID(sgvm.GeekID);
+                LanarkshireGamersRepo.Instance.AddGameToUser(user, BusinessLogicHelper.ConverGeekGameToGame(geekGame));
+            }
+            return true;
+        }
     }
 }

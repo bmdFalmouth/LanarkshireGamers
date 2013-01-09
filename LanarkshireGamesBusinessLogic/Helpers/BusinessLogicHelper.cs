@@ -82,5 +82,21 @@ namespace LanarkshireGamesBusinessLogic.Helpers
 
             return gvm;
         }
+
+        public static Game ConverGeekGameToGame(BoardGameGeekGame geekGame)
+        {
+            Game game = new Game
+            {
+                Description = geekGame.Description,
+                GeekID = geekGame.GeekID,
+                MaxNumberOfPlayers = geekGame.MaxNumberOfPlayers,
+                MinNumberOfPlayers = geekGame.MinNumberOfPlayers,
+                Name = geekGame.Name,
+                PlayTime = geekGame.PlayTime,
+                ThumbNailURL = geekGame.ThumbNailURL
+            };
+
+            return game;
+        }
     }
 }

@@ -62,6 +62,7 @@ namespace LanarkshireGamersData
             try
             {
                 context.Entry(u).State = EntityState.Modified;
+                context.SaveChanges();
             }
             catch (InvalidOperationException ioe)
             {
@@ -74,6 +75,7 @@ namespace LanarkshireGamersData
 
         public bool AddUser(User u)
         {
+            u.Games=new List<Game>();
             context.User.Add(u);
             try
             {

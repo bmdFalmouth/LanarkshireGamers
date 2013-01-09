@@ -19,40 +19,38 @@ namespace LanarkshireGamers.Controllers
         }
 
         //
-        //Get: /Game/Search
+        // GET: /Game/Search/
         public ActionResult Search()
         {
-            SearchGameViewModelResults search = new SearchGameViewModelResults();
-            search.searchTerm = "Catan";
-            search.Games = new List<SearchGameViewModel>(gameLogic.SearchGamesOnGeek(search.searchTerm));
-            return View(search);
+            return View(new SearchGameViewModelResults());
         }
 
         //
-        //Post: /Game/Search/term
+        //POST: /Game/Search/
         [HttpPost]
         public ActionResult Search(SearchGameViewModelResults search)
         {
             if (Request.IsAjaxRequest())
             {
                 search.Games = new List<SearchGameViewModel>(gameLogic.SearchGamesOnGeek(search.searchTerm));
-                return PartialView(search);
+                return View(search);
             }
             else
             {
                 search.Games = new List<SearchGameViewModel>(gameLogic.SearchGamesOnGeek(search.searchTerm));
-                return PartialView(search);
+                return View(search);
             }
         }
 
         //
         //Post: /Game/SaveSelection
         [HttpPost]
-        public ActionResult SaveSelection(SearchGameViewModelResults results)
+        public ActionResult SaveSelection(IList<SearchGameViewModel> games)
         {
             //get the results - get a filtered list of only those selected and then pass to 
             //logic to convert and save
-            var saveResults = results.Games.Where(x => x.Selected == true);
+            var saveResults = games.Where(x => x.Selected == true);
+            gameLogic.SaveAllGames(saveResults.ToList(), HttpContext.User.Identity.Name);
             return Redirect("Index");
         }
 

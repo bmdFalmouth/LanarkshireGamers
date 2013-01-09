@@ -25,9 +25,7 @@ namespace LanarkshireGamers.ViewModel
     {
         [Required]
         public string Name { get; set; }
-        [ReadOnly(true)]
         public string GeekID { get; set; }
-        [ReadOnly(true)]
         public bool Selected { get; set; }
     }
 
@@ -37,7 +35,8 @@ namespace LanarkshireGamers.ViewModel
         {
             Games = new List<SearchGameViewModel>();
         }
+        [Required]
         public string searchTerm { get; set; }
-        public IEnumerable<SearchGameViewModel> Games { get; set; }
+        public IList<SearchGameViewModel> Games { get; set; }
     }
 }
