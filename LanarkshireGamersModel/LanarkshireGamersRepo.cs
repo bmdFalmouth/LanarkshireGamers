@@ -39,15 +39,18 @@ namespace LanarkshireGamersData
 
         public bool AddGame(Game g)
         {
-            context.Game.Add(g);
-            try
+            if (context.Game.FirstOrDefault(x => x.Name == g.Name) == null)
             {
-                context.SaveChanges();
-            }
-            catch (InvalidOperationException ioe)
-            {
-                //rethrow as an add user exception
-                return false;
+                context.Game.Add(g);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (InvalidOperationException ioe)
+                {
+                    //rethrow as an add user exception
+                    return false;
+                }
             }
             return true;
         }

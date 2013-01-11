@@ -54,5 +54,14 @@ namespace LanarkshireGamers.Controllers
             return Redirect("Index");
         }
 
+        //
+        //Post: /Game/ImportGamesFromGeekCollection
+        [HttpPost]
+        public ActionResult ImportGamesFromGeekCollection()
+        {
+
+            return Redirect("Index");
+        }
+
     }
 }
