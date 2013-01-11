@@ -1,6 +1,38 @@
 ﻿@model LanarkshireGamers.ViewModel.GameViewModel
 
 <div class="display-game">
-    <img src='@Model.ThumbNailURL' alt='@Model.Name' />
-    <p>Name: @Html.DisplayFor(model => model.Name)</p>
+    <table border="0">
+    <tr>
+        <td class='thumbnailCell'><img src='@Model.ThumbNailURL' alt='@Model.Name' /></td>
+        <td>
+            <h2>@Html.DisplayFor(model => model.Name)</h2>
+        </td> 
+    </tr>
+    <tr>
+        <td>Player time(in mins):</td>
+        <td><b>@Html.DisplayFor(model=>model.PlayTime)</b></td>
+    </tr>
+    <tr>
+        <td>Number of Players:</td>
+        <td><b>@Html.DisplayFor(model => model.MinNumberOfPlayers) - @Html.DisplayFor(model => model.MaxNumberOfPlayers)</b></td>
+    </tr>
+    <tr>
+    
+        <td colspan="2"><div id="descriptionElement"><p id="ClickInstructions">Click to see description</p><p id="description">Click to hide<br /><br />@Html.Raw(Model.Description)</p></div></td>
+    </tr>
+    </table>
+     
 </div>
+<script type="text/javascript">
+    $(document).ready($(function () {
+        $('#description').hide();
+        $('#descriptionElement').click(function () {
+            if ($('#description').is(":visible")) {
+                $('#description').hide(400, function () { $('#ClickInstructions').show('slow'); });
+            }
+            else {
+                $('#ClickInstructions').hide(400, function () { $('#description').show('slow'); });
+            }
+        });
+    }));
+</script>

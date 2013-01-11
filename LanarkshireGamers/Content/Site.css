@@ -214,6 +214,10 @@ input[type="submit"] {
 
 /* TABLE
 ----------------------------------------------------------*/
+.thumbnailCell
+{
+    width: 15%;
+}
 
 table {
     border: solid 1px #e8eef4;
