@@ -26,10 +26,11 @@
     </tr>
     <tr>
     
-        <td colspan="2"><p class="clickInstruction">Click to hide/show<br /><br /></p>
-        <div class="descriptionElement">
-            <p class="description">@Html.Raw(Model.Description)</p>
-         </div>
+        <td colspan="2">
+            <div class="descriptionElement">
+                <p class="clickInstruction">Click to hide/show<br /><br /></p>
+                <p class="description">@Html.Raw(Model.Description)</p>
+            </div>
          </td>
     </tr>
     </table>
@@ -40,19 +41,12 @@
     $(document).ready($(function () {
         $('.description').hide();
 
-        $('.descriptionElement').click(function (e) {
-            var descInst = $(this).find('p:first');
-            descInst.toggle();
+        $('.descriptionElement').click(function () {
+            var descInst = $(this).find('p:last');
+            descInst.slideToggle("slow");
             e.preventDefault();
+            e.stopPropagation();
             return false;
-            /*
-            if ($('#description').is(":visible")) {
-            $('#description').hide(400, function () { $('#ClickInstructions').show('fast'); });
-            }
-            else {
-            $('#ClickInstructions').hide(400, function () { $('#description').show('fast'); });
-            }
-            ;*/
         });
     }));
 </script>
