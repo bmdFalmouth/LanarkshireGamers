@@ -14,25 +14,45 @@
     </tr>
     <tr>
         <td>Number of Players:</td>
-        <td><b>@Html.DisplayFor(model => model.MinNumberOfPlayers) - @Html.DisplayFor(model => model.MaxNumberOfPlayers)</b></td>
+        <td>@if(Model.MinNumberOfPlayers== Model.MaxNumberOfPlayers)
+            {
+                <b>@Html.DisplayFor(model => model.MinNumberOfPlayers)</b>
+            }
+            else
+            {
+                <b>@Html.DisplayFor(model => model.MinNumberOfPlayers) - @Html.DisplayFor(model => model.MaxNumberOfPlayers)</b>
+            }
+        </td>
     </tr>
     <tr>
     
-        <td colspan="2"><div id="descriptionElement"><p id="ClickInstructions">Click to see description</p><p id="description">Click to hide<br /><br />@Html.Raw(Model.Description)</p></div></td>
+        <td colspan="2"><p class="clickInstruction">Click to hide/show<br /><br /></p>
+        <div class="descriptionElement">
+            <p class="description">@Html.Raw(Model.Description)</p>
+         </div>
+         </td>
     </tr>
     </table>
      
 </div>
+
 <script type="text/javascript">
     $(document).ready($(function () {
-        $('#description').hide();
-        $('#descriptionElement').click(function () {
+        $('.description').hide();
+
+        $('.descriptionElement').click(function (e) {
+            var descInst = $(this).find('p:first');
+            descInst.toggle();
+            e.preventDefault();
+            return false;
+            /*
             if ($('#description').is(":visible")) {
-                $('#description').hide(400, function () { $('#ClickInstructions').show('slow'); });
+            $('#description').hide(400, function () { $('#ClickInstructions').show('fast'); });
             }
             else {
-                $('#ClickInstructions').hide(400, function () { $('#description').show('slow'); });
+            $('#ClickInstructions').hide(400, function () { $('#description').show('fast'); });
             }
+            ;*/
         });
     }));
 </script>
