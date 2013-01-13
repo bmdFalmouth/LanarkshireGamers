@@ -23,19 +23,23 @@ namespace LanarkshireGamers.ViewModel
 
     public class SearchGameViewModel
     {
+        public const string BoardGameURL = "http://boardgamegeek.com/boardgame/";
         [Required]
         public string Name { get; set; }
         public string GeekID { get; set; }
         public bool Selected { get; set; }
+        public string GameURL { get; set; }
     }
 
     public class SearchGameViewModelResults
     {
+        
         public SearchGameViewModelResults()
         {
             Games = new List<SearchGameViewModel>();
         }
         [Required]
+        [Display(Name = "Game Name")]
         public string searchTerm { get; set; }
         public IList<SearchGameViewModel> Games { get; set; }
     }

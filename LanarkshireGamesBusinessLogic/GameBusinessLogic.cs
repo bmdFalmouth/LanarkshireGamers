@@ -34,6 +34,7 @@ namespace LanarkshireGamesBusinessLogic
             foreach (BoardGameGeekSearchResult result in gamesFromGeek)
             {
                 SearchGameViewModel gvm = BusinessLogicHelper.ConvertGeekGameSearchToGameViewModel(result);
+                gvm.GameURL = SearchGameViewModel.BoardGameURL + gvm.GeekID;
                 gamesViewModel.Add(gvm);
             }
 

@@ -1,10 +1,10 @@
 ﻿@model LanarkshireGamers.ViewModel.SearchGameViewModelResults
 
 @{
-    ViewBag.Title = "Search";
+    ViewBag.Title = "Add Games";
 }
 
-<h2>Search</h2>
+<h2>Add Games to Collection</h2>
 
 <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
@@ -12,8 +12,6 @@
 @using (Ajax.BeginForm("Search","Game",new AjaxOptions{ HttpMethod="POST", UpdateTargetId="search-results"})) {
     @Html.ValidationSummary(true)
     <fieldset>
-        <legend>SearchGameViewModel</legend>
-
         <div class="editor-label">
             @Html.LabelFor(model => model.searchTerm)
         </div>
@@ -33,5 +31,23 @@
     
     <input type="submit" value="Save Selection" />
 }
+
+<script type="text/javascript">
+    var tooltipTimeout;
+
+    $("#hoverElement").hover(function ()
+    { tooltipTimeout = setTimeout(showTooltip, 2000); },
+                    hideTooltip);
+
+    function showTooltip() {
+        var tooltip = $("<div id='tooltip' class='tooltip'>I'm the tooltip!</div>");
+        tooltip.appendTo($("#hoverElement"));
+    }
+
+    function hideTooltip() {
+        clearTimeout(tooltipTimeout);
+        $("#tooltip").fadeOut().remove();
+    }
+</script>
 
 

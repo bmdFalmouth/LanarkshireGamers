@@ -57,11 +57,16 @@ namespace LanarkshireGamersData
 
         public bool AddGameToUser(User u, Game g)
         {
-            if (context.Game.FirstOrDefault(game => game.Name == g.Name)==null)
+            Game game=context.Game.FirstOrDefault(x => x.Name == g.Name);
+            if (game == null)
             {
                 AddGame(g);
+                u.Games.Add(g);
             }
-            u.Games.Add(g);
+            else
+            {
+                u.Games.Add(game);
+            }
             try
             {
                 context.Entry(u).State = EntityState.Modified;
@@ -99,11 +104,36 @@ namespace LanarkshireGamersData
             return true;
         }
 
+        public IEnumerable<Game> GetUsersGame(string username)
+        {
+            User u = GetUserByUsername(username);
+
+            return u.Games;
+        }
+
         public IEnumerable<Game> RetrieveAllGames()
         {
             return context.Game;
         }
 
+        public Game RetrieveGameByName(string name)
+        {
+            return context.Game.FirstOrDefault(g => g.Name == name);
+        }
 
+        public Game RetrieveGameByGeekID(string geekID)
+        {
+            return context.Game.FirstOrDefault(g => g.GeekID == geekID);
+        }
+
+        public IEnumerable<Game> RetrieveAllGamesByPlaytime(int minTime,int maxTime)
+        {
+            return context.Game.Where(x => x.PlayTime >= minTime || x.PlayTime <= maxTime);
+        }
+
+        public IEnumerable<Game> RetrieveAllGamesByPlayerNumber(int minPlayers, int maxPlayers)
+        {
+            return context.Game.Where(x => x.MinNumberOfPlayers >= minPlayers || x.MaxNumberOfPlayers <= maxPlayers);
+        }
     }
 }

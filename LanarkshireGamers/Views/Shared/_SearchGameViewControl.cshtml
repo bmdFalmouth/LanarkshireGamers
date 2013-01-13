@@ -5,6 +5,7 @@
     <div id='@Model[i].Name'>
         @Html.HiddenFor(modelItem => modelItem[i].Name) 
         @Html.HiddenFor(modelItem => modelItem[i].GeekID)
-        @Html.DisplayFor(modelItem => modelItem[i].Name) @Html.CheckBoxFor(modelItem=>modelItem[i].Selected)
+        <a class="hoverElement" href='@Model[i].GameURL'>@Model[i].Name</a>
+        @Html.CheckBoxFor(modelItem=>modelItem[i].Selected)
     </div>
 }
