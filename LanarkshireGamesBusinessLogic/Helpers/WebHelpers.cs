@@ -7,13 +7,23 @@ using System.Net;
 
 namespace LanarkshireGamesBusinessLogic.Helpers
 {
+    //http://www.codeproject.com/Articles/422572/Exception-Handling-in-ASP-NET-MVC
     public class WebHelpers
     {
         public static XDocument GetXMLFromServer(string address)
         {
-            WebClient wc = new WebClient();
-            XDocument doc = XDocument.Parse(wc.DownloadString(address));
-            return doc;
+            try
+            {
+                WebClient wc = new WebClient();
+                XDocument doc = XDocument.Parse(wc.DownloadString(address));
+                return doc;
+            }
+            catch (Exception e)
+            {
+                //rethrow
+                throw new Exception("Can't download data, website may be down");
+            }
+
         }
     }
 }

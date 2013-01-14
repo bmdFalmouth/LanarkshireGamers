@@ -200,6 +200,14 @@ input[type="password"] {
     width: 200px;
 }
 
+.email input{
+    border: 1px solid #ccc;
+    padding: 2px;
+    font-size: 1.2em;
+    color: #444;
+    width: 400px;
+}
+
 select {
     border: 1px solid #ccc;
     padding: 2px;

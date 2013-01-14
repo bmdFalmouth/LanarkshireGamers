@@ -55,6 +55,7 @@ namespace LanarkshireGamers.ViewModel
         [Required]
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email address")]
+        [StringLength(400)]
         public string Email { get; set; }
 
         [Required]

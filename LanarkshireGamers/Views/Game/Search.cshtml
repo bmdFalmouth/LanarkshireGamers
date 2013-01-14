@@ -32,22 +32,16 @@
     <input type="submit" value="Save Selection" />
 }
 
+<!-- http://stackoverflow.com/questions/9599679/how-to-make-preview-webpage-application -->
 <script type="text/javascript">
-    var tooltipTimeout;
-
-    $("#hoverElement").hover(function ()
-    { tooltipTimeout = setTimeout(showTooltip, 2000); },
-                    hideTooltip);
-
-    function showTooltip() {
-        var tooltip = $("<div id='tooltip' class='tooltip'>I'm the tooltip!</div>");
-        tooltip.appendTo($("#hoverElement"));
-    }
-
-    function hideTooltip() {
-        clearTimeout(tooltipTimeout);
-        $("#tooltip").fadeOut().remove();
-    }
+    $(document).ready($(function () {
+        $(".hoverElement").mouseenter(function () {
+            $(this).after('<iframe id=preview width=640 height=480 src=' + $(this).text + '></iframe>');
+        });
+        $(".hoverElement").mouseleave(function () {
+            $('#preview').remove();
+        });
+    }));
 </script>
 
 
